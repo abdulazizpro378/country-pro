@@ -12,6 +12,7 @@ const request = async (reource) => {
     }
     const data = await req.json()
     loaderToggle(false)
+    
     return data
 };
 

@@ -20,14 +20,14 @@ eval("__webpack_require__.r(__webpack_exports__);\n// extracted by mini-css-extr
 
 /***/ }),
 
-/***/ "./src/js/filter.js":
-/*!**************************!*\
-  !*** ./src/js/filter.js ***!
-  \**************************/
+/***/ "./src/js/about.js":
+/*!*************************!*\
+  !*** ./src/js/about.js ***!
+  \*************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _updateUi__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./updateUi */ \"./src/js/updateUi.js\");\n/* harmony import */ var _request__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./request */ \"./src/js/request.js\");\nconst serchFormEl = document.querySelector(\".search\");\r\n\r\nserchFormEl.search.addEventListener(\"input\", () => {\r\n  const serchVAlue = serchFormEl.search.value.toLowerCase();\r\n  const cardstem = document.querySelectorAll(\".cards__item\");\r\n  const cardTitle = document.querySelectorAll(\".cards__title\");\r\n  cardTitle.forEach((titels, i) => {\r\n    if (titels.textContent.toLocaleLowerCase().includes(serchVAlue)) {\r\n      cardstem[i].style.display = \"block\";\r\n    } else {\r\n      cardstem[i].style.display = \"none\";\r\n    }\r\n  });\r\n});\r\n\r\nconst serchSelect = document.querySelectorAll(\".search__select-list li\");\r\n\r\nconst serchSelectSpan = document.querySelector(\".search__select span\");\r\n\r\n\r\n\r\n\r\nserchSelect.forEach((li) => {\r\n  li.addEventListener(\"click\", () => {\r\n    serchSelectSpan.textContent = li.textContent;\r\n    let filterApi;\r\n\r\n    if (li.textContent == \"All\") {\r\n      filterApi = \"https://restcountries.com/v3.1/all\";\r\n    } else {\r\n      filterApi = `\r\n        https://restcountries.com/v3.1/region/${li.textContent}\r\n        \r\n        `;\r\n    }\r\n\r\n    (0,_request__WEBPACK_IMPORTED_MODULE_1__[\"default\"])(filterApi)\r\n      .then((data) => {\r\n        (0,_updateUi__WEBPACK_IMPORTED_MODULE_0__.createCountries)(data);\r\n      })\r\n      .catch((err) => {\r\n        alert(err.massage);\r\n      });\r\n  });\r\n});\r\n\n\n//# sourceURL=webpack://homework/./src/js/filter.js?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _css_main_css__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../css/main.css */ \"./src/css/main.css\");\n/* harmony import */ var _mode__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./mode */ \"./src/js/mode.js\");\n/* harmony import */ var _mode__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_mode__WEBPACK_IMPORTED_MODULE_1__);\n/* harmony import */ var _request__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./request */ \"./src/js/request.js\");\n/* harmony import */ var _updateUi__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./updateUi */ \"./src/js/updateUi.js\");\n\r\n\r\n\r\n\r\n\r\n\r\n\r\nconst queryString = window.location.search\r\nconst urlParems = new URLSearchParams(queryString)\r\nconst country = urlParems.get('country')\r\nconst countrApi = ` https://restcountries.com/v3.1/name/${country}`\r\n\r\n;(0,_request__WEBPACK_IMPORTED_MODULE_2__[\"default\"])(countrApi).then((data) => {\r\n    ;(0,_updateUi__WEBPACK_IMPORTED_MODULE_3__.createCountryInfo)(data[0])\r\n}).catch((err) => {\r\n    alert(err.message)\r\n})\n\n//# sourceURL=webpack://homework/./src/js/about.js?");
 
 /***/ }),
 
@@ -39,17 +39,6 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _upd
 
 "use strict";
 eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (__WEBPACK_DEFAULT_EXPORT__)\n/* harmony export */ });\nconst loaderEl = document.querySelector(\".loader\");\r\n\r\nconst loaderToggle = (info) => {\r\n  if (info) {\r\n    loaderEl.classList.remove(\"hidden\");\r\n  } else {\r\n    loaderEl.classList.add(\"hidden\");\r\n  }\r\n};\r\n\r\n/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (loaderToggle);\r\n\n\n//# sourceURL=webpack://homework/./src/js/loader.js?");
-
-/***/ }),
-
-/***/ "./src/js/main.js":
-/*!************************!*\
-  !*** ./src/js/main.js ***!
-  \************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _css_main_css__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../css/main.css */ \"./src/css/main.css\");\n/* harmony import */ var _request__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./request */ \"./src/js/request.js\");\n/* harmony import */ var _updateUi__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./updateUi */ \"./src/js/updateUi.js\");\n/* harmony import */ var _filter__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./filter */ \"./src/js/filter.js\");\n/* harmony import */ var _mode__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./mode */ \"./src/js/mode.js\");\n/* harmony import */ var _mode__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(_mode__WEBPACK_IMPORTED_MODULE_4__);\n\r\n\r\n\r\n\r\n\r\n\r\n\r\nconst API = \"https://restcountries.com/v3.1/all\";\r\n\r\n(0,_request__WEBPACK_IMPORTED_MODULE_1__[\"default\"])(API)\r\n  .then((data) => {\r\n    (0,_updateUi__WEBPACK_IMPORTED_MODULE_2__.createCountries)(data);\r\n  })\r\n  .catch((err) => {\r\n    alert(err.message);\r\n  });\r\n\n\n//# sourceURL=webpack://homework/./src/js/main.js?");
 
 /***/ }),
 
@@ -70,7 +59,7 @@ eval("const Modebtn = document.querySelector(\".header__dark-mode\");\r\nconst b
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (__WEBPACK_DEFAULT_EXPORT__)\n/* harmony export */ });\n/* harmony import */ var _loader__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./loader */ \"./src/js/loader.js\");\n\r\n\r\n\r\nconst request = async (reource) => {\r\n    (0,_loader__WEBPACK_IMPORTED_MODULE_0__[\"default\"])(true)\r\n    const req = await fetch(reource)\r\n\r\n\r\n    if(!req.ok){\r\n        (0,_loader__WEBPACK_IMPORTED_MODULE_0__[\"default\"])(false)\r\n        throw new Error(\"Something wenyt working ??\")\r\n    }\r\n    const data = await req.json()\r\n    ;(0,_loader__WEBPACK_IMPORTED_MODULE_0__[\"default\"])(false)\r\n    return data\r\n};\r\n\r\n\r\n/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (request);\n\n//# sourceURL=webpack://homework/./src/js/request.js?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (__WEBPACK_DEFAULT_EXPORT__)\n/* harmony export */ });\n/* harmony import */ var _loader__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./loader */ \"./src/js/loader.js\");\n\r\n\r\n\r\nconst request = async (reource) => {\r\n    (0,_loader__WEBPACK_IMPORTED_MODULE_0__[\"default\"])(true)\r\n    const req = await fetch(reource)\r\n\r\n\r\n    if(!req.ok){\r\n        (0,_loader__WEBPACK_IMPORTED_MODULE_0__[\"default\"])(false)\r\n        throw new Error(\"Something wenyt working ??\")\r\n    }\r\n    const data = await req.json()\r\n    ;(0,_loader__WEBPACK_IMPORTED_MODULE_0__[\"default\"])(false)\r\n    \r\n    return data\r\n};\r\n\r\n\r\n/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (request);\n\n//# sourceURL=webpack://homework/./src/js/request.js?");
 
 /***/ }),
 
@@ -157,7 +146,7 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpac
 /******/ 	// startup
 /******/ 	// Load entry module and return exports
 /******/ 	// This entry module can't be inlined because the eval devtool is used.
-/******/ 	var __webpack_exports__ = __webpack_require__("./src/js/main.js");
+/******/ 	var __webpack_exports__ = __webpack_require__("./src/js/about.js");
 /******/ 	
 /******/ })()
 ;
